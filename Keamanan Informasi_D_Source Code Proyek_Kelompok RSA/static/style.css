@@ -1,0 +1,27 @@
+body {
+    background-color: #f9f9f9;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h2 {
+    color: #333;
+    margin-bottom: 30px;
+    font-weight: bold;
+}
+
+textarea {
+    font-family: monospace;
+    resize: vertical;
+}
+
+hr {
+    margin: 40px 0;
+}
+
+.btn {
+    min-width: 150px;
+}
+
+.alert {
+    font-size: 0.95rem;
+}

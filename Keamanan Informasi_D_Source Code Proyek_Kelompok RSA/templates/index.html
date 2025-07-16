@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>LockNote</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 700px;
+            margin: auto;
+            padding: 20px;
+            background-color: #f0f2f5;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        textarea, input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #1976D2;
+            color: white;
+            border: none;
+            margin-right: 10px;
+            border-radius: 5px;
+        }
+        pre {
+            background-color: #e0e0e0;
+            padding: 10px;
+            white-space: pre-wrap;
+        }
+        .timing {
+            background-color: #fff3cd;
+            border: 1px solid #ffeeba;
+            padding: 10px;
+            margin-top: 10px;
+            color: #856404;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔐 LockNote</h1>
+
+    <!-- Timing Info -->
+    {% if keygen_timing %}
+    <div class="timing">{{ keygen_timing }}</div>
+    {% endif %}
+
+
+
+
+
+    <!-- Generate RSA Key -->
+    <form method="POST">
+        <button type="submit" name="action" value="generate">Generate RSA Key</button>
+    </form>
+
+    <!-- Display Keys -->
+    <h3>Public Key</h3>
+    <pre>{{ public_key }}</pre>
+
+
+
+     {% if encrypt_timing %}
+    <div class="timing">{{ encrypt_timing }}</div>
+    {% endif %}
+   
+    <form method="POST">
+        <h3>Encrypt Note</h3>
+        <textarea name="note" placeholder="Enter note here..."></textarea>
+        <button type="submit" name="action" value="encrypt">Encrypt</button>
+    </form>
+
+    <h3>Encrypted Note</h3>
+    <textarea readonly rows="6" style="width: 100%; resize: none;">{{ encrypted_note }}</textarea>
+   
+   
+    <form method="POST">
+        <h3>Decrypt Note</h3>
+        <textarea name="ciphertext" placeholder="Paste encrypted note here..."></textarea>
+        <textarea name="private_key" placeholder="Paste private key here (if different from the one used for encryption)"></textarea>
+        <button type="submit" name="action" value="decrypt">Decrypt</button>
+    </form>
+
+    <h3>Decrypted Note</h3>
+    <pre>{{ decrypted_note }}</pre>
+    {% if decrypt_timing %}
+    <div class="timing">{{ decrypt_timing }}</div>
+    {% endif %}
+    <h3>Private Key</h3>
+    <pre>{{ private_key }}</pre>
+</body>
+</html>
