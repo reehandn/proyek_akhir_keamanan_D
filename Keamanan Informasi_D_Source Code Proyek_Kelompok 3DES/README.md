@@ -75,9 +75,3 @@ streamlit run app.py
   - Hasil enkripsi (base64, sebagian)
   - Kunci enkripsi (hex)
   - Waktu dan durasi proses
-
----
-
-## Lisensi
-
-Proyek ini untuk keperluan pembelajaran dan tugas akademik. Gunakan secara bijak.
