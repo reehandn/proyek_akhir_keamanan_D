@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enkripsi Gambar RC5</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gray-100 text-gray-800 flex items-center justify-center min-h-screen p-4">
+
+    <div class="w-full max-w-5xl bg-white rounded-2xl shadow-lg p-6 md:p-8">
+        <!-- Header -->
+        <div class="text-center mb-6">
+            <h1 class="text-3xl md:text-4xl font-bold text-blue-600">Enkripsi & Dekripsi RC5</h1>
+            <p class="text-gray-600 mt-1">Unggah gambar (PNG/JPG) untuk enkripsi, atau file <code>.bin</code> untuk dekripsi.</p>
+        </div>
+
+        <!-- Kontrol dan Parameter -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6 p-6 bg-gray-50 rounded-lg border">
+            <!-- Parameter RC5 -->
+            <div class="space-y-4">
+                <h3 class="font-semibold text-lg text-gray-700">Parameter Algoritma</h3>
+                <div>
+                    <label for="wordSize" class="block text-sm font-medium text-gray-700 mb-1">Ukuran Kata (w)</label>
+                    <select id="wordSize" class="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                        <option value="16">16-bit</option>
+                        <option value="32" selected>32-bit</option>
+                        <option value="64">64-bit (Lambat)</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="rounds" class="block text-sm font-medium text-gray-700 mb-1">Jumlah Putaran (r)</label>
+                    <input type="number" id="rounds" value="12" min="1" max="255" class="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                </div>
+                <div>
+                    <label for="secretKey" class="block text-sm font-medium text-gray-700 mb-1">Kunci Rahasia</label>
+                    <input type="text" id="secretKey" placeholder="Masukkan kunci di sini" class="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                </div>
+            </div>
+
+            <!-- Input dan Aksi -->
+            <div class="space-y-4 md:col-span-2">
+                <h3 class="font-semibold text-lg text-gray-700">Input & Aksi</h3>
+                <div>
+                    <label for="fileInput" class="w-full inline-flex items-center justify-center px-4 py-3 border border-transparent text-base font-medium rounded-md text-blue-700 bg-blue-100 hover:bg-blue-200 cursor-pointer transition-colors">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path></svg>
+                        Pilih File (Gambar atau .bin)
+                    </label>
+                    <input type="file" id="fileInput" accept="image/*,.bin">
+                    <p id="fileName" class="text-sm text-gray-500 mt-2 text-center">Belum ada file yang dipilih.</p>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <button id="encryptBtn" disabled class="w-full flex items-center justify-center px-4 py-3 border border-transparent text-base font-medium rounded-md text-white bg-green-600 hover:bg-green-700 disabled:bg-gray-400 disabled:cursor-not-allowed">
+                        Enkripsi
+                    </button>
+                    <button id="decryptBtn" disabled class="w-full flex items-center justify-center px-4 py-3 border border-transparent text-base font-medium rounded-md text-white bg-red-600 hover:bg-red-700 disabled:bg-gray-400 disabled:cursor-not-allowed">
+                        Dekripsi
+                    </button>
+                </div>
+                <div id="status" class="h-8 flex items-center justify-center text-sm font-medium text-gray-600"></div>
+            </div>
+        </div>
+
+        <!-- Debug View Toggle and Container -->
+        <div class="mb-6">
+            <div class="flex items-center space-x-4">
+                <button id="debugToggle" class="text-sm text-blue-600 hover:text-blue-800">Tampilkan/Sembunyikan Log Debug</button>
+                <div class="flex items-center">
+                    <input id="verboseDebug" type="checkbox" class="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500">
+                    <label for="verboseDebug" class="ml-2 block text-sm text-gray-900">Mode Detail (lambat)</label>
+                </div>
+            </div>
+            <div id="debugView" class="hidden mt-2"></div>
+        </div>
+
+        <!-- Output Gambar -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="w-full text-center">
+                <h2 class="text-xl font-semibold mb-4">Input</h2>
+                <canvas id="inputCanvas" class="w-full h-auto rounded-lg"></canvas>
+            </div>
+            <div class="w-full text-center">
+                <h2 class="text-xl font-semibold mb-4">Hasil Proses</h2>
+                <canvas id="processedCanvas" class="w-full h-auto rounded-lg"></canvas>
+                <button id="downloadBtn" disabled class="mt-4 inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m-4-4v12a3 3 0 003 3h12a3 3 0 003-3V8M4 8h16"></path></svg>
+                    <span id="downloadBtnText">Unduh Hasil</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
