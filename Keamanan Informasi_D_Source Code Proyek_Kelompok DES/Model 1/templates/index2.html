@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>DES Encryptor/Decryptor</title>
+    <style>
+        :root {
+            --primary: #4a6bff;
+            --light-bg: #f0f4f8;
+            --card-bg: #ffffff;
+            --text-dark: #2d3748;
+            --text-muted: #718096;
+            --border: #e2e8f0;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: var(--light-bg);
+            margin: 0;
+            padding: 0;
+            color: var(--text-dark);
+        }
+
+        header {
+            background: var(--primary);
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 28px;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            padding: 30px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            padding: 25px;
+            width: 320px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card h3 {
+            margin-bottom: 15px;
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+
+        textarea,
+        input[type="text"] {
+            padding: 12px;
+            border-radius: 8px;
+            border: 2px solid var(--border);
+            resize: none;
+            font-size: 14px;
+            margin-bottom: 15px;
+            width: 100%;
+            box-sizing: border-box;
+            background-color: #f8fafc;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        textarea {
+            min-height: 150px;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        button {
+            flex: 1;
+            padding: 12px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            font-size: 15px;
+        }
+
+        button:hover {
+            background-color: #3a56d4;
+        }
+
+        .log-card {
+            width: 100%;
+            max-width: 960px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .log-content {
+            height: 200px;
+            max-height: 200px;
+            overflow-y: auto;
+            padding: 12px;
+            background-color: #f8fafc;
+            border-radius: 8px;
+            border: 2px solid var(--border);
+            font-family: monospace;
+            font-size: 13px;
+        }
+
+        .log-entry {
+            margin-bottom: 8px;
+            color: var(--text-dark);
+            padding: 6px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        footer {
+            background-color: var(--card-bg);
+            color: var(--text-muted);
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+            font-size: 14px;
+            border-top: 1px solid var(--border);
+        }
+
+        @media (max-width: 900px) {
+            .container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .card {
+                width: 100%;
+                max-width: 500px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <h1>DES Encryption & Decryption Tool</h1>
+    </header>
+
+    <!-- Main Content -->
+    <form method="POST">
+        <div class="container">
+            <!-- Input Text - LEFT -->
+            <div class="card">
+                <h3>Input Text</h3>
+                <textarea name="plain_text" placeholder="Enter text here...">{{ plain_text }}</textarea>
+            </div>
+
+            <!-- Key + Buttons - CENTER -->
+            <div class="card">
+                <h3>Encryption Key</h3>
+                <input type="text" name="key" value="{{ key }}" placeholder="Enter any key..." required>
+                <div class="buttons">
+                    <button type="submit" name="encrypt">Encrypt</button>
+                    <button type="submit" name="decrypt">Decrypt</button>
+                </div>
+            </div>
+
+            <!-- Output - RIGHT -->
+            <div class="card">
+                <h3>Result</h3>
+                <textarea readonly placeholder="Encrypted or decrypted output...">{{ cipher_text }}</textarea>
+            </div>
+
+            <!-- Log History - FULL WIDTH BELOW -->
+            <div class="card log-card">
+                <h3>Log History</h3>
+                <div class="log-content">
+                    {% for entry in log_history %}
+                        <div class="log-entry">• {{ entry }}</div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <!-- Footer -->
+    <footer>
+        &copy; 2025 DES Encryptor App | by Kelompok 1
+    </footer>
+</body>
+</html>

@@ -1,0 +1,128 @@
+Encryption | Key: wdaw | Time: 45272045.97 ms
+Encryption | Key: 123 | Time: 524841226.56 ms
+Encryption | Key: 123 | Time: 524844823.99 ms
+Encryption | Key: 123 | Time: 524847654.25 ms
+Encryption | Key: 123 | Time: 524849941.89 ms
+Encryption | Key: 123 | Time: 524858706.72 ms
+Encryption | Key: 123 | Time: 524863518.61 ms
+Encryption | Key: 123 | Time: 525120662.46 ms
+Encryption | Key: 123 | Time: 525129205.64 ms
+Encryption | Key: 123 | Time: 525133172.72 ms
+Encryption | Key: 123456789012345 | Time: 525166309.62 ms
+Encryption | Key: 123456789012345 | Time: 525220295.27 ms
+Encryption | Key: 123456789012345 | Time: 525223928.49 ms
+Encryption | Key: 123456789012345 | Time: 525463563.09 ms
+Encryption | Key: 123456789012345 | Time: 525466521.71 ms
+Encryption | Key: 123456789012345 | Time: 525467108.33 ms
+Encryption | Key: 123456789012345 | Time: 525467577.72 ms
+Encryption | Key: 123456789012345 | Time: 525467900.17 ms
+Decryption | Key: 123456789012345 | Time: 525475516.34 ms
+Encryption | Key: 123456789012345 | Time: 525506419.58 ms
+Encryption | Key: 123 | Time: 525509218.53 ms
+Encryption | Key: 123 | Time: 525509277.73 ms
+Encryption | Key: 123 | Time: 525510171.23 ms
+Encryption | Key: 123 | Time: 525539282.83 ms
+Encryption | Key: 123 | Time: 525540389.20 ms
+Encryption | Key: 123 | Time: 526492371.02 ms
+Encryption | Key: 123 | Time: 526505099.38 ms
+Encryption | Key: 123 | Time: 526506147.80 ms
+Encryption | Key: 123 | Time: 526508988.66 ms
+Encryption | Key: 123 | Time: 526511621.59 ms
+Encryption | Key: 123 | Time: 526518004.66 ms
+Encryption | Key: 123 | Time: 526535651.36 ms
+Encryption | Key: 123 | Time: 526537443.88 ms
+Encryption | Key: 123 | Time: 526541547.17 ms
+Encryption | Key: 123 | Time: 526543570.21 ms
+Encryption | Key: 123 | Time: 526552868.53 ms
+Encryption | Key: 123 | Time: 526555277.53 ms
+Encryption | Key: 123 | Time: 526556315.94 ms
+Encryption | Key: 123 | Time: 526560692.82 ms
+Encrypt (CBC) | Key: 123 | IV: 123 | Time: 3.93 ms
+Encrypt (ECB) | Key: 123 | IV: 123 | Time: 3.06 ms
+Encrypt (ECB) | Key: 123 | IV: 123 | Time: 1.48 ms
+Encrypt (CBC) | Key: 123 | IV: 123 | Time: 3.48 ms
+Encrypt (CBC) | Key: 123 | IV: 123 | Time: 1.98 ms
+Encrypt (CBC) | Key: 123 | IV: 123 | Time: 84.80 μs
+Encrypt (CBC) | Key: 123 | IV: 123 | Time: 69.40 μs
+Encrypt (CBC) | Key: 123 | IV: 123 | Time: 54.50 μs
+Encrypt (ECB) | Key: 123 | IV: 123 | Time: 2.32 ms
+Encrypt (CBC) | Key: 123 | IV: 123 | Time: 76.40 μs
+Encrypt (CBC) | Key: 123 | IV: 12345 | Time: 71.60 μs
+Encrypt (CBC) | Key: 123 | IV: 12345 | Time: 59.60 μs
+Encrypt (CBC) | Key: 123 | IV: 12345 | Time: 76.10 μs
+Encrypt (ECB) | Key: 123 | IV: 12345 | Time: 83.00 μs
+Encrypt (CBC) | Key: 12345 | IV: default | Time: 39.51 ms
+Encrypt (ECB) | Key: 12345 | IV: default | Time: 36.39 ms
+Encrypt (ECB) | Key: 12345 | IV: default | Time: 68.20 μs
+Encrypt (ECB) | Key: 12345 | IV: default | Time: 117.50 μs
+Encrypt (ECB) | Key: 12345 | IV: default | Time: 110.50 μs
+Encrypt (ECB) | Key: 12345 | IV: default | Time: 87.50 μs
+Encrypt (CBC) | Key: 12345 | IV: default | Time: 85.60 μs
+Encrypt (ECB) | Key: 12345 | IV: default | Time: 111.50 μs
+Encrypt (CBC) | Key: 12345 | IV: default | Time: 75.20 μs
+Encrypt (ECB) | Key: 12345 | IV: default | Time: 76.30 μs
+Encrypt (CBC) | Key: 12345 | IV: default | Time: 43.40 ms
+Encrypt (CBC) | Key: 12345 | IV: default | Time: 229.00 μs
+Encrypt (CBC) | Key: 12345 | IV: default | Time: 346.70 μs
+Encrypt (CBC) | Key: 12345 | IV: default | Time: 112.80 μs
+Encrypt (CBC) | Key: 12345 | IV: 101 | Time: 117.30 μs
+Encrypt (ECB) | Key: 12345 | IV: default | Time: 29.90 ms
+Encrypt (ECB) | Key: 12345 | IV: default | Time: 112.90 μs
+Encrypt (ECB) | Key: 12345 | IV: default | Time: 98.70 μs
+Encrypt (ECB) | Key: 12345 | IV: default | Time: 109.90 μs
+Encrypt (ECB) | Key: 12345 | IV: default | Time: 126.10 μs
+Encrypt (ECB) | Key: 12345 | IV: default | Time: 125.10 μs
+Encrypt (ECB) | Key: 12345 | IV: default | Time: 149.70 μs
+Encrypt (ECB) | Key: 12345 | IV: default | Time: 111.40 μs
+Encrypt (ECB) | Key: 12345 | IV: default | Time: 123.30 μs
+Decrypt (ECB) | Key: 123 | IV: default | Time: 26.77 ms
+Encrypt (ECB) | Key: 123 | IV: default | Time: 64.20 μs
+Encrypt (ECB) | Key: 12345 | IV: default | Time: 64.10 μs
+Encrypt (ECB) | Key: 12345 | IV: default | Time: 88.70 μs
+Encrypt (ECB) | Key: 12345 | IV: default | Time: 95.60 μs
+Encrypt (CBC) | Key: 12345 | IV: 101 | Time: 46.01 ms
+Encrypt (CBC) | Key: 12345 | IV: 101 | Time: 84.30 μs
+Encrypt (CBC) | Key: 12345 | IV: 101 | Time: 74.90 μs
+Encrypt (CBC) | Key: 12345 | IV: 101 | Time: 61.00 μs
+Encrypt (CBC) | Key: 12345 | IV: 101 | Time: 84.30 μs
+Encrypt (CBC) | Key: 12345 | IV: 101 | Time: 98.90 μs
+Encrypt (CBC) | Key: 12345 | IV: 101 | Time: 56.40 μs
+Encrypt (CBC) | Key: 12345 | IV: 101 | Time: 84.10 μs
+Encrypt (CBC) | Key: 12345 | IV: 101 | Time: 70.50 μs
+Encrypt (CBC) | Key: 12345 | IV: 101 | Time: 76.50 μs
+Encrypt (CBC) | Key: 12345 | IV: 101 | Time: 73.00 μs
+Encrypt (CBC) | Key: 12345 | IV: 101 | Time: 57.80 μs
+Encrypt (CBC) | Key: 12345 | IV: 101 | Time: 71.50 μs
+Encrypt (CBC) | Key: 12345 | IV: 101 | Time: 179.90 μs
+Encrypt (CBC) | Key: 12345 | IV: 101 | Time: 82.80 μs
+Encrypt (CBC) | Key: 12345 | IV: 101 | Time: 64.10 μs
+Encrypt (CBC) | Key: 12345 | IV: 101 | Time: 54.20 μs
+Encrypt (CBC) | Key: 12345 | IV: 101 | Time: 168.80 μs
+Encrypt (CBC) | Key: 12345 | IV: 101 | Time: 68.00 μs
+Encrypt (CBC) | Key: 12345 | IV: 101 | Time: 74.40 μs
+Encrypt (CBC) | Key: 12345 | IV: 101 | Time: 58.30 μs
+Encrypt (CBC) | Key: 12345 | IV: 101 | Time: 69.90 μs
+Failed (CBC) | Key: 12345 | IV: 101 | Time: 395.10 μs
+Encrypt (CBC) | Key: 12345 | IV: 101 | Time: 59.30 μs
+Decrypt (CBC) | Key: 12345 | IV: default | Time: 264.50 μs
+Decrypt (CBC) | Key: 12345 | IV: default | Time: 86.70 μs
+Decrypt (CBC) | Key: 12345 | IV: default | Time: 64.10 μs
+Decrypt (CBC) | Key: 12345 | IV: default | Time: 109.60 μs
+Decrypt (CBC) | Key: 12345 | IV: default | Time: 73.20 μs
+Decrypt (CBC) | Key: 12345 | IV: default | Time: 126.20 μs
+Encrypt (CBC) | Key: 12345 | IV: 101 | Time: 231.00 μs
+Encrypt (ECB) | Key: 12345 | IV: default | Time: 63.50 ms
+Encrypt (CBC) | Key: 12345 | IV: default | Time: 37.85 ms
+Encrypt (CBC) | Key: 12345 | IV: 101 | Time: 152.50 μs
+Encrypt (CBC) | Key: 12345 | IV: default | Time: 326.50 μs
+Encrypt (CBC) | Key: 12345 | IV: 101 | Time: 134.60 μs
+Encrypt (ECB) | Key: 12345 | IV: 101 | Time: 189.50 μs
+Decrypt (CBC) | Key: 1234 | IV: default | Time: 412.20 μs
+Encrypt (CBC) | Key: 1234 | IV: default | Time: 206.10 μs
+Decrypt (CBC) | Key: 1234 | IV: default | Time: 199.20 μs
+Encrypt (ECB) | Key: 12345 | IV: default | Time: 29.93 ms
+Encrypt (CBC) | Key: 12345 | IV: 123 | Time: 29.89 ms
+Encrypt (CBC) | Key: 12345 | IV: 123 | Time: 101.60 μs
+Encrypt (CBC) | Key: 12345 | IV: 123 | Time: 245.80 μs
+Encrypt (CBC) | Key: 12345 | IV: 123 | Time: 155.80 μs
+Encrypt (CBC) | Key: 12345 | IV: 1234 | Time: 83.50 μs

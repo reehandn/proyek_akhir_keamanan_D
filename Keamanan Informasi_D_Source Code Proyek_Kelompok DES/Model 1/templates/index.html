@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DES Encryptor/Decryptor</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --primary-dark: #3a56d4;
+            --secondary: #3f37c9;
+            --success: #4cc9f0;
+            --danger: #f72585;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+            --border-radius: 12px;
+            --box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        header i {
+            margin-right: 12px;
+            font-size: 1.8rem;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: -40px auto 40px;
+            background: white;
+            padding: 2.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            position: relative;
+            z-index: 1;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: block;
+            color: var(--dark);
+            font-size: 0.95rem;
+        }
+
+        textarea, input, select {
+            width: 100%;
+            padding: 12px 15px;
+            margin-top: 0.25rem;
+            border-radius: var(--border-radius);
+            border: 1px solid #e0e3eb;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            background-color: #f8fafc;
+        }
+
+        textarea:focus, input:focus, select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.15);
+            background-color: white;
+        }
+
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        button {
+            padding: 14px 20px;
+            font-weight: 600;
+            border: none;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            color: white;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        .encrypt-btn {
+            background-color: var(--primary);
+        }
+
+        .encrypt-btn:hover {
+            background-color: var(--primary-dark);
+        }
+
+        .decrypt-btn {
+            background-color: var(--danger);
+        }
+
+        .decrypt-btn:hover {
+            background-color: #e5177e;
+        }
+
+        .btn-group {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .btn-group button {
+            flex: 1;
+        }
+
+        .btn-group button i {
+            margin-right: 8px;
+        }
+
+        .log-content {
+            background: #f8f9fa;
+            border-radius: var(--border-radius);
+            padding: 1rem;
+            min-height: 150px;
+            max-height: 200px;
+            overflow-y: auto;
+            font-size: 0.9rem;
+            border: 1px solid #e9ecef;
+            font-family: 'SF Mono', 'Roboto Mono', monospace;
+        }
+
+        .log-content div {
+            padding: 0.25rem 0;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .log-content div:last-child {
+            border-bottom: none;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            font-size: 0.9rem;
+            color: var(--gray);
+            margin-top: 2rem;
+        }
+
+        /* Modern scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #c1c1c1;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #a8a8a8;
+        }
+
+        /* Animated background for header */
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        header {
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                margin: -20px auto 20px;
+                padding: 1.5rem;
+            }
+            
+            header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .btn-group {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1><i class="fas fa-lock"></i> DES Encryptor - ECB & CBC</h1>
+</header>
+
+<form method="POST">
+    <div class="container">
+
+        <div class="form-group">
+            <label for="plain_text">Input Text</label>
+            <textarea name="plain_text" rows="4" placeholder="Enter your message...">{{ plain_text }}</textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="key">Key (max 8 chars)</label>
+            <input type="text" name="key" maxlength="8" value="{{ key }}" placeholder="e.g., secret12" required>
+        </div>
+
+        <div class="form-group">
+            <label for="mode">Encryption Mode</label>
+            <select name="mode" onchange="toggleIV(this.value)">
+                <option value="ECB" {% if mode == 'ECB' %}selected{% endif %}>ECB (No IV)</option>
+                <option value="CBC" {% if mode == 'CBC' %}selected{% endif %}>CBC (Needs IV)</option>
+            </select>
+        </div>
+
+        <div id="ivInput" class="form-group">
+            <label for="iv">IV (Optional for CBC, max 8 chars)</label>
+            <input type="text" name="iv" maxlength="8" value="{{ iv }}" placeholder="e.g., myvector">
+        </div>
+
+        <div class="btn-group">
+            <button class="encrypt-btn" type="submit" name="encrypt"><i class="fas fa-lock"></i> Encrypt</button>
+            <button class="decrypt-btn" type="submit" name="decrypt"><i class="fas fa-lock-open"></i> Decrypt</button>
+        </div>
+
+        <div class="form-group">
+            <label for="cipher_text">Result</label>
+            <textarea readonly rows="4">{{ cipher_text }}</textarea>
+        </div>
+
+        <div class="form-group">
+            <label>Log History</label>
+            <div class="log-content">
+                {% for entry in log_history %}
+                    <div>{{ entry }}</div>
+                {% endfor %}
+            </div>
+        </div>
+
+    </div>
+</form>
+
+<footer>
+    &copy; 2025 DES Encryptor | Developed by Kelompok 1 | Mode: ECB / CBC with optional IV
+</footer>
+
+<script>
+    function toggleIV(mode) {
+        const ivDiv = document.getElementById('ivInput');
+        if (mode === 'CBC') {
+            ivDiv.style.display = 'block';
+        } else {
+            ivDiv.style.display = 'none';
+        }
+    }
+
+    // Run on page load
+    toggleIV("{{ mode }}");
+</script>
+
+</body>
+</html>
